@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Laboratorio XR - Entorno Industrial</title>
+    <!-- Incluyendo la librería de A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.1/dist/aframe-master.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- ========================================== -->
+      <!-- PARTE D: GESTIÓN DE ASSETS (MODELO CAD)    -->
+      <!-- ========================================== -->
+      <a-assets>
+        <!-- Reemplaza "models/modelo.glb" con la ruta a tu propio modelo exportado desde SolidWorks/Blender -->
+        <!-- Ejemplo: si tu archivo se llama "motor.glb" y está en una carpeta "models", pones "models/motor.glb" -->
+        <a-asset-item id="modeloIndustrial" src="models/modelo.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- ========================================== -->
+      <!-- PARTE C: MODELO INDUSTRIAL CON PRIMITIVAS  -->
+      <!-- ========================================== -->
+      
+      <!-- 1. PISO DE LA FÁBRICA (a-plane) -->
+      <a-plane position="0 0 -5" rotation="-90 0 0" width="15" height="15" color="#5a5a5a"></a-plane>
+
+      <!-- 2. TANQUE DE ALMACENAMIENTO (a-cylinder) -->
+      <!-- Cuerpo del tanque -->
+      <a-cylinder position="-3 1.5 -5" radius="1.5" height="3" color="#2980b9"></a-cylinder>
+      <!-- Tapa del tanque (Cono simulado con cylinder modificado o a-cone) -->
+      <a-cone position="-3 3.5 -5" radius-bottom="1.5" radius-top="0" height="1" color="#34495e"></a-cone>
+      <!-- Válvula del tanque (a-box) -->
+      <a-box position="-1.5 0.5 -5" width="0.5" height="0.5" depth="0.5" color="#c0392b"></a-box>
+
+      <!-- 3. BANDA TRANSPORTADORA (a-box y a-cylinder) -->
+      <!-- Estructura principal de la banda -->
+      <a-box position="2 0.8 -5" width="4" height="0.2" depth="1" color="#2c3e50"></a-box>
+      <!-- Soportes / Patas de la banda -->
+      <a-cylinder position="0.5 0.4 -4.8" radius="0.1" height="0.8" color="#7f8c8d"></a-cylinder>
+      <a-cylinder position="0.5 0.4 -5.2" radius="0.1" height="0.8" color="#7f8c8d"></a-cylinder>
+      <a-cylinder position="3.5 0.4 -4.8" radius="0.1" height="0.8" color="#7f8c8d"></a-cylinder>
+      <a-cylinder position="3.5 0.4 -5.2" radius="0.1" height="0.8" color="#7f8c8d"></a-cylinder>
+      
+      <!-- Objeto sobre la banda (Caja de producto) -->
+      <a-box position="2 1.1 -5" width="0.6" height="0.4" depth="0.6" color="#f39c12"></a-box>
+
+      <!-- 4. SENSOR / INDICADOR (a-sphere) -->
+      <!-- Soporte del sensor -->
+      <a-box position="0 1.5 -4.5" width="0.2" height="1.5" depth="0.2" color="#7f8c8d"></a-box>
+      <!-- Luz del sensor (Esfera con animación pulsante para darle dinamismo) -->
+      <a-sphere position="0 2.4 -4.5" radius="0.2" color="#2ecc71" 
+                animation="property: material.opacity; from: 1; to: 0.3; dir: alternate; dur: 800; loop: true">
+      </a-sphere>
+
+      <!-- ========================================== -->
+      <!-- INTEGRACIÓN DEL MODELO CAD EXTERNO         -->
+      <!-- ========================================== -->
+      <!-- Aquí se carga el archivo .glb que pusiste en los <a-assets> -->
+      <!-- Modifica el 'position', 'scale' y 'rotation' según necesite tu modelo -->
+      <a-entity gltf-model="#modeloIndustrial" position="0 0 -8" scale="1 1 1"></a-entity>
+
+      <!-- ========================================== -->
+      <!-- AMBIENTE Y CÁMARA                          -->
+      <!-- ========================================== -->
+      <!-- Cielo (a-sky) -->
+      <a-sky color="#ecf0f1"></a-sky>
+
+      <!-- Cámara del usuario con posición inicial ajustada -->
+      <a-entity position="0 1.6 0">
+        <a-camera></a-camera>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
