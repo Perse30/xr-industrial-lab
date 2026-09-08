@@ -12,8 +12,6 @@
       <!-- PARTE D: GESTIÓN DE ASSETS (MODELO CAD)    -->
       <!-- ========================================== -->
       <a-assets>
-        <!-- Reemplaza "models/modelo.glb" con la ruta a tu propio modelo exportado desde SolidWorks/Blender -->
-        <!-- Ejemplo: si tu archivo se llama "motor.glb" y está en una carpeta "models", pones "models/motor.glb" -->
         <a-asset-item id="modeloIndustrial" src="modelo.glb"></a-asset-item>
       </a-assets>
 
@@ -55,8 +53,6 @@
       <!-- ========================================== -->
       <!-- INTEGRACIÓN DEL MODELO CAD EXTERNO         -->
       <!-- ========================================== -->
-      <!-- Aquí se carga el archivo .glb que pusiste en los <a-assets> -->
-      <!-- Modifica el 'position', 'scale' y 'rotation' según necesite tu modelo -->
       <a-entity gltf-model="#modeloIndustrial" position="-20 -15 -10" scale="8 8 8"></a-entity>
 
       <!-- ========================================== -->
